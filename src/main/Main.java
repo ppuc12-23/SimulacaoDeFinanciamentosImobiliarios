@@ -1,37 +1,47 @@
 package main;
 import java.util.ArrayList;
 import modelo.Financiamento;
+import modelo.Casa;
+import modelo.Apartamento;
+import modelo.Terreno;
 import util.InterfaceUsuario;
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<Financiamento> financiamentos = new ArrayList<>();
 
-        Financiamento fin1 = new Financiamento(100000, 20, 10);
+        double valorImovel = InterfaceUsuario.dadoValorImovel();
+        int prazoFinanciamento = InterfaceUsuario.dadoPrazoFinanciamento();
+        double taxaJurosAnual = InterfaceUsuario.dadoTaxaJurosAnual();
+
+        Financiamento fin1 = new Casa(valorImovel, prazoFinanciamento, taxaJurosAnual);
         financiamentos.add(fin1);
-        Financiamento fin2 = new Financiamento(300000, 50, 20);
+        Financiamento fin2 = new Casa(200000, 15, 0.1);
         financiamentos.add(fin2);
-        Financiamento fin3 = new Financiamento(400000, 40, 10);
+        Financiamento fin3 = new Apartamento(300000, 15, 0.2);
         financiamentos.add(fin3);
-        Financiamento fin4 = new Financiamento(500000, 50, 10);
+        Financiamento fin4 = new Apartamento(400000, 25, 0.09);
         financiamentos.add(fin4);
+        Financiamento fin5 = new Terreno(100000, 10, 0.02);
+        financiamentos.add(fin5);
 
         double totalValorReal = 0;
         double totalValorFinanciamento = 0;
         for (Financiamento financiamento : financiamentos) {
             double valorReal = financiamento.getValorImovel();
             double valorFinanciamento = financiamento.totalPagamento();
+            System.out.println(financiamento.parcelaMensal()+" "+valorFinanciamento);
             if (Double.isNaN(valorFinanciamento)) {
                 System.out.println("Não é possível efetuar os financiamentos!");
+                totalValorReal = 0;
+                totalValorFinanciamento = 0;
                 break;
             }
 
             totalValorReal += valorReal;
             totalValorFinanciamento += valorFinanciamento;
         }
-
         System.out.printf("Total de todos os imóveis: R$ %.2f. Total de todos os financiamentos: R$ %.2f.\n", totalValorReal, totalValorFinanciamento);
-
 
         /*
         //TESTE:

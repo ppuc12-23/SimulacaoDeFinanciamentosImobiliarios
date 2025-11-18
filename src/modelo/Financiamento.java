@@ -17,7 +17,7 @@ public class Financiamento {
 
                 if (taxaJurosAnual < 0) {
                     System.out.println("O valor precisa ser positivo!");
-                } else if (taxaJurosAnual > 40) {
+                } else if (taxaJurosAnual > 0.4) {
                     System.out.println("Taxa de juros muito alta!");
                 } else {
                     this.prazoFinanciamento = prazoFinanciamento;

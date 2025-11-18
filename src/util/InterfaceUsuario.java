@@ -55,7 +55,7 @@ public class InterfaceUsuario {
                 x = scanner.nextDouble();
                 if (x<=0){
                     System.out.println("O valor precisa ser positivo");
-                }else if(x>40){
+                }else if(x>0.4){
                     System.out.println("Taxa de juros muito alta!");
                     x = -1;
                 }
