@@ -67,4 +67,98 @@ public class InterfaceUsuario {
         } while (x <=0);
         return x;
     }
+
+    public static double dadoTamanhoAreaConstruida() {
+        double x;
+        Scanner scanner = new Scanner(System.in);
+        do{
+            try{
+                System.out.print("Digite o tamanho da área construída no imóvel: ");
+                x = scanner.nextDouble();
+                if (x<=0){
+                    System.out.println("O valor precisa ser positivo");
+                } else if (0<x && x<10){
+                    System.out.println("Tamanho improvável");
+                }
+            } catch(java.util.InputMismatchException erro){
+                System.out.println("Valor inválido!");
+                scanner.next();
+                x = -1;
+            }
+        } while (x < 10);
+        return x;
+    }
+
+    public static double dadoTamanhoTerreno() {
+        double x;
+        Scanner scanner = new Scanner(System.in);
+        do{
+            try{
+                System.out.print("Digite o tamanho da área do terreno do imóvel: ");
+                x = scanner.nextDouble();
+                if (x<=0){
+                    System.out.println("O valor precisa ser positivo");
+                } else if (0<x && x<20){
+                    System.out.println("Tamanho improvável");
+                }
+            } catch(java.util.InputMismatchException erro){
+                System.out.println("Valor inválido!");
+                scanner.next();
+                x = -1;
+            }
+        } while (x < 20);
+        return x;
+    }
+
+    public static int dadoVagasGaragem() {
+        int x;
+        Scanner scanner = new Scanner(System.in);
+        do{
+            try{
+                System.out.print("Digite o número de vagas disponíveis na garagem: ");
+                x = scanner.nextInt();
+                if (x<0){
+                    System.out.println("O valor é impossível");
+                }
+            } catch(java.util.InputMismatchException erro){
+                System.out.println("Valor inválido!");
+                scanner.next();
+                x = -1;
+            }
+        } while (x < 0);
+        return x;
+    }
+
+    public static int dadoAndar() {
+        int x;
+        Scanner scanner = new Scanner(System.in);
+        do{
+            try{
+                System.out.print("Digite o número do andar do apartamento: ");
+                x = scanner.nextInt();
+                if (x<0){
+                    System.out.println("O valor precisa ser positivo ou 0");
+                }
+            } catch(java.util.InputMismatchException erro){
+                System.out.println("Valor inválido!");
+                scanner.next();
+                x = -1;
+            }
+        } while (x < 0);
+        return x;
+    }
+
+    public static String dadoZona() {
+        String x;
+        Scanner scanner = new Scanner(System.in);
+        do{
+            System.out.print("Digite Se o apartamento está na zona residêncial(r) ou comercial(c): ");
+            x = scanner.nextLine();
+            if (!x.equals("c") && !x.equals("r")){
+                System.out.println("Digite r para residêncial ou c para comercial");
+            }
+
+        } while (!x.equals("c") && !x.equals("r"));
+        return x;
+    }
 }

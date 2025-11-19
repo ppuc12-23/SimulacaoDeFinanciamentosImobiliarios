@@ -1,6 +1,6 @@
 package modelo;
 
-public class Financiamento {
+public abstract class Financiamento {
     private double valorImovel;
     private int prazoFinanciamento;
     private double taxaJurosAnual;
@@ -28,32 +28,11 @@ public class Financiamento {
         } else {
             System.out.println("Não é possível adicionar imovel com valor negativo");
         }
-/*
-        if (prazoFinanciamento<0) {
-            System.out.println("Não existe prazo negativo!");
-        } else if (prazoFinanciamento > 60) {
-            System.out.println("Prazo muito longo. Diminua o tempo de financiamento.");
-        } else {
-            this.prazoFinanciamento = prazoFinanciamento;
-        }
-
-        if (taxaJurosAnual < 0) {
-            System.out.println("O valor precisa ser positivo!");
-        } else if (taxaJurosAnual > 40) {
-            System.out.println("Taxa de juros muito alta!");
-        } else {
-            this.taxaJurosAnual = taxaJurosAnual;
-        }
- */
     }
 
-    public double parcelaMensal() {
-        return (valorImovel/(prazoFinanciamento*12))*(1+(taxaJurosAnual/12));
-    }
+    public abstract double parcelaMensal();
 
-    public double totalPagamento() {
-        return (parcelaMensal()*prazoFinanciamento*12);
-    }
+    public abstract double totalPagamento();
 
     public double getValorImovel() {
         return valorImovel;

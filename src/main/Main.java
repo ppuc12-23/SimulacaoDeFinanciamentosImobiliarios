@@ -13,16 +13,21 @@ public class Main {
         double valorImovel = InterfaceUsuario.dadoValorImovel();
         int prazoFinanciamento = InterfaceUsuario.dadoPrazoFinanciamento();
         double taxaJurosAnual = InterfaceUsuario.dadoTaxaJurosAnual();
+        //int tamanhoAreaConstruida = InterfaceUsuario.dadoVagasGaragem();
+        //int tamanhoTerreno = InterfaceUsuario.dadoAndar();
+        String zona = InterfaceUsuario.dadoZona();
 
-        Financiamento fin1 = new Casa(valorImovel, prazoFinanciamento, taxaJurosAnual);
+        Financiamento fin1 = new Terreno(valorImovel, prazoFinanciamento, taxaJurosAnual, zona);
         financiamentos.add(fin1);
-        Financiamento fin2 = new Casa(200000, 15, 0.1);
+        Financiamento fin2 = new Casa(200000, 15, 0.1, 11, 21);
+        // preciso tratar tamanhoAreaConstruida e tamanhoTerreno <0 - o financiamento tem que travar!!!
         financiamentos.add(fin2);
-        Financiamento fin3 = new Apartamento(300000, 15, 0.2);
+        Financiamento fin3 = new Apartamento(300000, 15, 0.2, 1, 2);
+        // preciso tratar vagasGaragem e numeroAndar <0 - o financiamento tem que travar!!!
         financiamentos.add(fin3);
-        Financiamento fin4 = new Apartamento(400000, 25, 0.09);
+        Financiamento fin4 = new Apartamento(400000, 25, 0.09, 0, 1);
         financiamentos.add(fin4);
-        Financiamento fin5 = new Terreno(100000, 10, 0.02);
+        Financiamento fin5 = new Terreno(100000, 10, 0.02, "Residencial");
         financiamentos.add(fin5);
 
         double totalValorReal = 0;
@@ -42,19 +47,5 @@ public class Main {
             totalValorFinanciamento += valorFinanciamento;
         }
         System.out.printf("Total de todos os imóveis: R$ %.2f. Total de todos os financiamentos: R$ %.2f.\n", totalValorReal, totalValorFinanciamento);
-
-        /*
-        //TESTE:
-        double valorDoImovel = InterfaceUsuario.dadoValorImovel();
-        int prazoDeFinanciamentoEmAnos = InterfaceUsuario.dadoPrazoFinanciamento();
-        double taxaDeJurosAnual = InterfaceUsuario.dadoTaxaJurosAnual();
-
-        Financiamento financiamento = new Financiamento(valorDoImovel, prazoDeFinanciamentoEmAnos, taxaDeJurosAnual);
-
-        double parcela = financiamento.parcelaMensal();
-        double total = financiamento.totalPagamento();
-
-        System.out.printf("Valor: %.2f,Prazo: %d,Taxa: %.2f, Parcela: %.2f, total: %.2f", valorDoImovel, prazoDeFinanciamentoEmAnos, taxaDeJurosAnual, parcela, total);
-        */
     }
 }
