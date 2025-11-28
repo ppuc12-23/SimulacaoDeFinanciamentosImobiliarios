@@ -10,15 +10,17 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Financiamento> financiamentos = new ArrayList<>();
 
+        // input do usuário
         double valorImovel = InterfaceUsuario.dadoValorImovel();
         int prazoFinanciamento = InterfaceUsuario.dadoPrazoFinanciamento();
         double taxaJurosAnual = InterfaceUsuario.dadoTaxaJurosAnual();
-        //int tamanhoAreaConstruida = InterfaceUsuario.dadoVagasGaragem();
-        //int tamanhoTerreno = InterfaceUsuario.dadoAndar();
-        String zona = InterfaceUsuario.dadoZona();
+        double tamanhoAreaConstruida = InterfaceUsuario.dadoTamanhoAreaConstruida();
+        double tamanhoTerreno = InterfaceUsuario.dadoTamanhoTerreno();
 
-        Financiamento fin1 = new Terreno(valorImovel, prazoFinanciamento, taxaJurosAnual, zona);
+
+        Financiamento fin1 = new Casa(valorImovel, prazoFinanciamento, taxaJurosAnual, tamanhoAreaConstruida, tamanhoTerreno);
         financiamentos.add(fin1);
+
         Financiamento fin2 = new Casa(200000, 15, 0.1, 11, 21);
         // preciso tratar tamanhoAreaConstruida e tamanhoTerreno <0 - o financiamento tem que travar!!!
         financiamentos.add(fin2);
@@ -29,6 +31,8 @@ public class Main {
         financiamentos.add(fin4);
         Financiamento fin5 = new Terreno(100000, 10, 0.02, "Residencial");
         financiamentos.add(fin5);
+
+
 
         double totalValorReal = 0;
         double totalValorFinanciamento = 0;

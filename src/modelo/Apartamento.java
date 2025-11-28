@@ -23,6 +23,7 @@ public class Apartamento extends Financiamento{
     @Override
     public double parcelaMensal() {
         int prazoFinanciamentoMeses = getPrazoFinanciamento()*12;
+        //não entendi a fórmula do material, apliquei a fórmula que achei em outro site
         return ((getValorImovel()*Math.pow((1+taxaJurosMensal),prazoFinanciamentoMeses))/(Math.pow((1+taxaJurosMensal),prazoFinanciamentoMeses) - 1))*taxaJurosMensal;
     }
 

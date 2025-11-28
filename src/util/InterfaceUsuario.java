@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class InterfaceUsuario {
 
     public static double dadoValorImovel() {
+        // pesquisar se preciso aplicar scanner.close() nesse caso
         double x;
         Scanner scanner = new Scanner(System.in);
         do{

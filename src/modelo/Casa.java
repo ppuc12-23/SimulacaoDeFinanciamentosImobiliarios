@@ -1,5 +1,7 @@
 package modelo;
 
+import util.AumentoMaiorDoQueJurosException;
+
 public class Casa extends Financiamento{
     private double tamanhoAreaConstruida;
     private double tamanhoTerreno;
@@ -20,9 +22,25 @@ public class Casa extends Financiamento{
         }
     }
 
+    private void verificarRegraJuros(double juros, double taxaAdicional) throws AumentoMaiorDoQueJurosException {
+            if (taxaAdicional>juros){
+                throw new AumentoMaiorDoQueJurosException("A taxa adicional está maior do que o juros da parcela. O valor mínimo de juros é o valor da taxa fixa!");
+            }
+    }
+
     @Override
+    // precisa de uma lógica melhor
     public double parcelaMensal() {
-        return (this.getValorImovel()/(getPrazoFinanciamento() *12))*(1+(getTaxaJurosAnual() /12)) + taxaAdicional;
+        double juros = ((this.getValorImovel()/(getPrazoFinanciamento() *12))*(1+(getTaxaJurosAnual() /12))) - getValorImovel()/(getPrazoFinanciamento()*12);
+        double taxaAdicional = this.taxaAdicional;
+        System.out.println(juros);
+        try{
+            verificarRegraJuros(juros, taxaAdicional);
+        } catch (AumentoMaiorDoQueJurosException e){
+            juros = taxaAdicional;
+            System.out.println(juros);
+        }
+        return (this.getValorImovel()/(getPrazoFinanciamento() *12)) + juros + taxaAdicional;
     }
 
     @Override
